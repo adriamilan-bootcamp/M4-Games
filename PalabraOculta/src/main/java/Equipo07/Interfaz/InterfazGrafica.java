@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Equipo07.JuegoFuncionalidad.Palabra;
+import Equipo07.JuegoFuncionalidad.Vidas;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -26,6 +27,11 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField tFieldPalabra;
+	
+	Palabra palabra = new Palabra();
+	String[] letras = palabra.palabraSplited();
+	String[] arrayIni = new String[letras.length];
+	Vidas vidas = new Vidas();
 	/**
 	 * Create the frame.
 	 */
@@ -285,29 +291,30 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		Palabra palabra;
-		String[] letras;
-		System.out.println(e.getActionCommand());
 		if (e.getActionCommand().equals("iniciar")) {
 			tFieldPalabra.setText("");
 			palabra = new Palabra();
-			letras = palabra.getPalabra().split("");
-			int i = 0;
-			while (i < letras.length) {
-				tFieldPalabra.setText(tFieldPalabra.getText() + "_ ");
-				i++;
+			System.out.println(palabra.getPalabra());
+			letras = palabra.palabraSplited();
+			for (int j = 0; j < letras.length; j++) {
+				arrayIni[j] = "_ ";
 			}
+			imprimir();
 			
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
 			System.out.println(letra.getText());
-			tFieldPalabra.setText(letra.getText());
-			
-			for (int i = 0; i < palabra.getPalabra().split("").length; i++) {
-				resultadoBusqueda = (palabraSplited[i].equals(letra)) ? true : false;
-			}
+			tFieldPalabra.setText("");
+			arrayIni = palabra.comprobarLetra(letra.getText(), arrayIni);
+			imprimir();
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
+		}
+	}
+	
+	public void imprimir() {
+		for (int i = 0; i < arrayIni.length; i++) {
+			tFieldPalabra.setText(tFieldPalabra.getText() + arrayIni[i]);
 		}
 	}
 }

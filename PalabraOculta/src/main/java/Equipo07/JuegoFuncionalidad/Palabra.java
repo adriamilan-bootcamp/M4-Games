@@ -24,23 +24,26 @@ public class Palabra {
 		return this.palabra;
 	}
 	
-	public String[] palabraSplited(String palabra) {
-		return palabra.split(""); 
+	public String[] palabraSplited() {
+		return this.palabra.split("");
 	}
 	
-	public boolean comprobarLetra(String palabra, String letra) {
-		String[] palabraSplited = palabraSplited(palabra);
+	public String[] comprobarLetra(String letra, String[] arrayIni) {
+		String[] palabraSplited = palabraSplited();
 		
 		boolean resultadoBusqueda = false;
 		for (int i = 0; i < palabraSplited.length; i++) {
-			resultadoBusqueda = (palabraSplited[i].equals(letra)) ? true : false;
+			if(palabraSplited[i].equals(letra)) {
+				arrayIni[i] = letra;
+				resultadoBusqueda = true;
+			}
 		}
 		
 		if (resultadoBusqueda == false) {
 			this.vidas.quitarVida();
 		}
 		
-		return resultadoBusqueda;
+		return arrayIni;
 	}
 	
 }
