@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Equipo07.JuegoFuncionalidad.Palabra;
-import Equipo07.JuegoFuncionalidad.Palabras;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -49,10 +48,6 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("New menu item");
-		mntmNewMenuItem_1.setBounds(-21, -17, 137, 26);
-		contentPane.add(mntmNewMenuItem_1);
 		
 		JPanel menu = new JPanel();
 		menu.setToolTipText("Menu");
@@ -294,7 +289,8 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 			tFieldPalabra.setText(palabra.getPalabra());
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
-			letra.getName();
+			System.out.println(letra.getText());
+			tFieldPalabra.setText(letra.getText());
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
 		}
