@@ -1,8 +1,11 @@
 package Equipo07.PalabraOculta;
 
 import java.awt.EventQueue;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import Equipo07.Interfaz.InterfazGrafica;
+import Equipo07.JuegoFuncionalidad.GestorEventos;
 
 /**
  * Hello world!
@@ -11,16 +14,7 @@ import Equipo07.Interfaz.InterfazGrafica;
 public class App 
 {
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InterfazGrafica frame = new InterfazGrafica();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		InterfazGrafica partida = new InterfazGrafica();
 	}
 }
