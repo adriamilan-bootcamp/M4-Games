@@ -21,4 +21,19 @@ public class Palabras {
 		return palabras;
 	}
 	
+	public String[] palabraSplited(String palabra) {
+		return palabra.split("\\a"); 
+	}
+	
+	public boolean comprobarLetra(String palabra, char letra) {
+		String[] palabraSplited = palabraSplited(palabra);
+		
+		boolean resultadoBusqueda = false;
+		for (int i = 0; i < palabraSplited.length; i++) {
+			resultadoBusqueda = (palabraSplited[i].equals(letra)) ? true : false;
+		}
+		
+		return resultadoBusqueda;
+	}
+	
 }
