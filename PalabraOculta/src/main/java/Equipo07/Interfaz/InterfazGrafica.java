@@ -16,14 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Equipo07.JuegoFuncionalidad.GestorEventos;
-import javax.swing.JDesktopPane;
 
 public class InterfazGrafica extends JFrame{
 
+	private GestorEventos gestor = new GestorEventos(this);
 	private JPanel contentPane;
+
 	public JTextField tFieldPalabra;
-	private GestorEventos eventos = new GestorEventos(this);
-	
 	/**
 	 * Create the frame.
 	 * @throws IOException 
@@ -45,7 +44,7 @@ public class InterfazGrafica extends JFrame{
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Salir");
-		mntmNewMenuItem_2.addActionListener(eventos);
+		mntmNewMenuItem_2.addActionListener(gestor);
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -57,7 +56,7 @@ public class InterfazGrafica extends JFrame{
 		menu.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Partida");
-		btnNewButton_1.addActionListener(eventos);
+		btnNewButton_1.addActionListener(gestor);
 		btnNewButton_1.setActionCommand("iniciar");
 		btnNewButton_1.setBounds(61, 11, 188, 49);
 		menu.add(btnNewButton_1);
@@ -88,22 +87,22 @@ public class InterfazGrafica extends JFrame{
 		panel_1.add(lblVida1);
 		
 		JLabel lblVida2 = new JLabel("");
-		lblVida2.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida2.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida2.setBounds(45, 25, 31, 29);
 		panel_1.add(lblVida2);
 		
 		JLabel lblVida3 = new JLabel("");
-		lblVida3.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida3.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida3.setBounds(80, 25, 31, 29);
 		panel_1.add(lblVida3);
 		
 		JLabel lblVida4 = new JLabel("");
-		lblVida4.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida4.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida4.setBounds(115, 25, 31, 29);
 		panel_1.add(lblVida4);
 		
 		JLabel lblVida5 = new JLabel("");
-		lblVida5.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida5.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida5.setBounds(150, 25, 31, 29);
 		panel_1.add(lblVida5);
 		
@@ -115,167 +114,167 @@ public class InterfazGrafica extends JFrame{
 		JButton btnA = new JButton("A");
 		btnA.setBounds(10, 11, 47, 23);
 		btnA.setActionCommand("letra");
-		btnA.addActionListener(eventos);
+		btnA.addActionListener(gestor);
 		teclado.add(btnA);
 		
 		JButton btnB = new JButton("B");
 		btnB.setBounds(64, 11, 47, 23);
 		btnB.setActionCommand("letra");
-		btnB.addActionListener(eventos);
+		btnB.addActionListener(gestor);
 		teclado.add(btnB);
 		
 		JButton btnD = new JButton("D");
 		btnD.setBounds(175, 11, 47, 23);
 		btnD.setActionCommand("letra");
-		btnD.addActionListener(eventos);
+		btnD.addActionListener(gestor);
 		teclado.add(btnD);
 		
 		JButton btnC = new JButton("C");
 		btnC.setBounds(121, 11, 47, 23);
 		btnC.setActionCommand("letra");
-		btnC.addActionListener(eventos);
+		btnC.addActionListener(gestor);
 		teclado.add(btnC);
 		
 		JButton btnE = new JButton("E");
 		btnE.setBounds(232, 11, 47, 23);
 		btnE.setActionCommand("letra");
-		btnE.addActionListener(eventos);
+		btnE.addActionListener(gestor);
 		teclado.add(btnE);
 		
 		JButton btnF = new JButton("F");
 		btnF.setBounds(10, 45, 47, 23);
 		btnF.setActionCommand("letra");
-		btnF.addActionListener(eventos);
+		btnF.addActionListener(gestor);
 		teclado.add(btnF);
 		
 		JButton btnG = new JButton("G");
 		btnG.setBounds(64, 45, 47, 23);
 		btnG.setActionCommand("letra");
-		btnG.addActionListener(eventos);
+		btnG.addActionListener(gestor);
 		teclado.add(btnG);
 		
 		JButton btnH = new JButton("H");
 		btnH.setBounds(121, 45, 47, 23);
 		btnH.setActionCommand("letra");
-		btnH.addActionListener(eventos);
+		btnH.addActionListener(gestor);
 		teclado.add(btnH);
 		
 		JButton btnI = new JButton("I");
 		btnI.setBounds(175, 45, 47, 23);
 		btnI.setActionCommand("letra");
-		btnI.addActionListener(eventos);
+		btnI.addActionListener(gestor);
 		teclado.add(btnI);
 		
 		JButton btnJ = new JButton("J");
 		btnJ.setBounds(232, 45, 47, 23);
 		btnJ.setActionCommand("letra");
-		btnJ.addActionListener(eventos);
+		btnJ.addActionListener(gestor);
 		teclado.add(btnJ);
 		
 		JButton btnK = new JButton("K");
 		btnK.setBounds(10, 79, 47, 23);
 		btnK.setActionCommand("letra");
-		btnK.addActionListener(eventos);
+		btnK.addActionListener(gestor);
 		teclado.add(btnK);
 		
 		JButton btnL = new JButton("L");
 		btnL.setBounds(64, 79, 47, 23);
 		btnL.setActionCommand("letra");
-		btnL.addActionListener(eventos);
+		btnL.addActionListener(gestor);
 		teclado.add(btnL);
 		
 		JButton btnM = new JButton("M");
 		btnM.setBounds(121, 79, 47, 23);
 		btnM.setActionCommand("letra");
-		btnM.addActionListener(eventos);
+		btnM.addActionListener(gestor);
 		teclado.add(btnM);
 		
 		JButton btnN = new JButton("N");
 		btnN.setBounds(175, 79, 47, 23);
 		btnN.setActionCommand("letra");
-		btnN.addActionListener(eventos);
+		btnN.addActionListener(gestor);
 		teclado.add(btnN);
 		
 		JButton btnO = new JButton("O");
 		btnO.setBounds(232, 79, 47, 23);
 		btnO.setActionCommand("letra");
-		btnO.addActionListener(eventos);
+		btnO.addActionListener(gestor);
 		teclado.add(btnO);
 		
 		JButton btnP = new JButton("P");
 		btnP.setBounds(10, 113, 47, 23);
 		btnP.setActionCommand("letra");
-		btnP.addActionListener(eventos);
+		btnP.addActionListener(gestor);
 		teclado.add(btnP);
 		
 		JButton btnQ = new JButton("Q");
 		btnQ.setBounds(64, 113, 47, 23);
 		btnQ.setActionCommand("letra");
-		btnQ.addActionListener(eventos);
+		btnQ.addActionListener(gestor);
 		teclado.add(btnQ);
 		
 		JButton btnR = new JButton("R");
 		btnR.setBounds(121, 113, 47, 23);
 		btnR.setActionCommand("letra");
-		btnR.addActionListener(eventos);
+		btnR.addActionListener(gestor);
 		teclado.add(btnR);
 		
 		JButton btnS = new JButton("S");
 		btnS.setBounds(175, 113, 47, 23);
 		btnS.setActionCommand("letra");
-		btnS.addActionListener(eventos);
+		btnS.addActionListener(gestor);
 		teclado.add(btnS);
 		
 		JButton btnT = new JButton("T");
 		btnT.setBounds(232, 113, 47, 23);
 		btnT.setActionCommand("letra");
-		btnT.addActionListener(eventos);
+		btnT.addActionListener(gestor);
 		teclado.add(btnT);
 		
 		JButton btnU = new JButton("U");
 		btnU.setBounds(10, 147, 47, 23);
 		btnU.setActionCommand("letra");
-		btnU.addActionListener(eventos);
+		btnU.addActionListener(gestor);
 		teclado.add(btnU);
 		
 		JButton btnV = new JButton("V");
 		btnV.setBounds(64, 147, 47, 23);
 		btnV.setActionCommand("letra");
-		btnV.addActionListener(eventos);
+		btnV.addActionListener(gestor);
 		teclado.add(btnV);
 		
 		JButton btnW = new JButton("W");
 		btnW.setBounds(121, 147, 47, 23);
 		btnW.setActionCommand("letra");
-		btnW.addActionListener(eventos);
+		btnW.addActionListener(gestor);
 		teclado.add(btnW);
 		
 		JButton btnX = new JButton("X");
 		btnX.setBounds(175, 147, 47, 23);
 		btnX.setActionCommand("letra");
-		btnX.addActionListener(eventos);
+		btnX.addActionListener(gestor);
 		teclado.add(btnX);
 		
 		JButton btnY = new JButton("Y");
 		btnY.setBounds(232, 147, 47, 23);
 		btnY.setActionCommand("letra");
-		btnY.addActionListener(eventos);
+		btnY.addActionListener(gestor);
 		teclado.add(btnY);
 		
 		JButton btnZ = new JButton("Z");
 		btnZ.setBounds(10, 181, 47, 23);
 		btnZ.setActionCommand("letra");
-		btnZ.addActionListener(eventos);
+		btnZ.addActionListener(gestor);
 		teclado.add(btnZ);
 		
 		JButton btnÑ = new JButton("Ñ");
 		btnÑ.setBounds(64, 181, 47, 23);
 		btnÑ.setActionCommand("letra");
-		btnÑ.addActionListener(eventos);
+		btnÑ.addActionListener(gestor);
 		teclado.add(btnÑ);
 		
 		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon(getClass().getResource("/img.jpg")));
+		lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img.jpg"))));
 		lblImage.setBounds(340, 20, 502, 521);
 		contentPane.add(lblImage);
 	}
