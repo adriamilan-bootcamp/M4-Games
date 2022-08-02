@@ -11,41 +11,60 @@ import Equipo07.Interfaz.InterfazGrafica;
 
 public class GestorEventos implements ActionListener{
 	
-	private InterfazGrafica partida;
+	private InterfazGrafica ig;
 	private Vidas vidas;
-	private Palabra palabras;
+	private Palabra palabra;
+	private String[]letras; 
+	private String[]arrayIni;
 
-	public GestorEventos() {
+	public GestorEventos(InterfazGrafica interfaz) {
 		
 		// INTERFAZ INSTANCE
-		this.partida = new InterfazGrafica();
+		this.ig = interfaz;
 		this.vidas = new Vidas();
-		this.palabras = new Palabra();
+		this.palabra = new Palabra();
+		this.letras = this.palabra.palabraSplited();
+		this.arrayIni = new String[letras.length];
 	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("inicia")) {
-			Palabra palabra = new Palabra();
-			partida.tFieldPalabra.setText(palabra.getPalabra());
+		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("iniciar")) {
+			ig.tFieldPalabra.setText("");
+			palabra = new Palabra();
+			System.out.println(palabra.getPalabra());
+			letras = palabra.palabraSplited();
+			for (int j = 0; j < letras.length; j++) {
+				arrayIni[j] = "_ ";
+			}
+			imprimir();
+			
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
 			System.out.println(letra.getText());
-			partida.tFieldPalabra.setText(letra.getText());
+			ig.tFieldPalabra.setText("");
+			arrayIni = palabra.comprobarLetra(letra.getText(), arrayIni);
+			imprimir();
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
 		}
-		
+	}
+	
+	public void imprimir() {
+		for (int i = 0; i < arrayIni.length; i++) {
+			ig.tFieldPalabra.setText(ig.tFieldPalabra.getText() + arrayIni[i]);
+		}
 	}
 
 
 	public InterfazGrafica getPartida() {
-		return partida;
+		return ig;
 	}
 
 	public void setPartida(InterfazGrafica partida) {
-		this.partida = partida;
+		this.ig = partida;
 	}
 
 	public Vidas getVidas() {
@@ -57,15 +76,13 @@ public class GestorEventos implements ActionListener{
 	}
 
 	public Palabra getPalabras() {
-		return palabras;
+		return palabra;
 	}
 
 	public void setPalabras(Palabra palabras) {
-		this.palabras = palabras;
+		this.palabra = palabras;
 	}
 
-	
-	// cambiarImagen();
 	
 	
 	

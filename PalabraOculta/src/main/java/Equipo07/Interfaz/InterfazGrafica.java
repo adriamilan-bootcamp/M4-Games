@@ -1,37 +1,35 @@
 package Equipo07.Interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import Equipo07.JuegoFuncionalidad.GestorEventos;
-import Equipo07.JuegoFuncionalidad.Palabra;
-
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.Action;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.event.KeyEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import Equipo07.JuegoFuncionalidad.GestorEventos;
 
 public class InterfazGrafica extends JFrame{
 
-	private GestorEventos gestor = new GestorEventos();
+	private GestorEventos gestor = new GestorEventos(this);
 	private JPanel contentPane;
+
 	public JTextField tFieldPalabra;
+
 	/**
 	 * Create the frame.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public InterfazGrafica() {
+	public InterfazGrafica() throws FileNotFoundException, IOException {
 		setTitle("EL AHORCADO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 868, 613);
@@ -46,6 +44,7 @@ public class InterfazGrafica extends JFrame{
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Salir");
+		mntmNewMenuItem_2.addActionListener(gestor);
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -85,26 +84,26 @@ public class InterfazGrafica extends JFrame{
 		
 		JLabel lblVida1 = new JLabel("");
 		lblVida1.setBounds(10, 25, 31, 29);
-		lblVida1.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida1.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		panel_1.add(lblVida1);
 		
 		JLabel lblVida2 = new JLabel("");
-		lblVida2.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida2.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida2.setBounds(45, 25, 31, 29);
 		panel_1.add(lblVida2);
 		
 		JLabel lblVida3 = new JLabel("");
-		lblVida3.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida3.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida3.setBounds(80, 25, 31, 29);
 		panel_1.add(lblVida3);
 		
 		JLabel lblVida4 = new JLabel("");
-		lblVida4.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida4.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida4.setBounds(115, 25, 31, 29);
 		panel_1.add(lblVida4);
 		
 		JLabel lblVida5 = new JLabel("");
-		lblVida5.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
+		lblVida5.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida5.setBounds(150, 25, 31, 29);
 		panel_1.add(lblVida5);
 		
@@ -278,9 +277,10 @@ public class InterfazGrafica extends JFrame{
 		teclado.add(btnÑ);
 		
 		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon(getClass().getResource("/img.jpg")));
+		lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img.jpg"))));
 		lblImage.setBounds(340, 20, 502, 521);
 		contentPane.add(lblImage);
 	}
 	
+
 }

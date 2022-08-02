@@ -9,7 +9,7 @@ public class Palabra {
 	private Vidas vidas = new Vidas();
 	
 	public Palabra() {
-		int randomNumber = (int)Math.floor(Math.random()*(9-0+1)+9);
+		int randomNumber = (int)Math.floor(Math.random()*9);
 		this.palabra = palabras[randomNumber];
 	}
 	
@@ -25,22 +25,25 @@ public class Palabra {
 	}
 	
 	public String[] palabraSplited() {
-		return this.palabra.split("\\a"); 
+		return this.palabra.split("");
 	}
 	
-	public boolean comprobarLetra(String letra) {
+	public String[] comprobarLetra(String letra, String[] arrayIni) {
 		String[] palabraSplited = palabraSplited();
 		
 		boolean resultadoBusqueda = false;
 		for (int i = 0; i < palabraSplited.length; i++) {
-			resultadoBusqueda = (palabraSplited[i].equals(letra)) ? true : false;
+			if(palabraSplited[i].equals(letra)) {
+				arrayIni[i] = letra;
+				resultadoBusqueda = true;
+			}
 		}
 		
 		if (resultadoBusqueda == false) {
 			this.vidas.quitarVida();
 		}
 		
-		return resultadoBusqueda;
+		return arrayIni;
 	}
 	
 }
