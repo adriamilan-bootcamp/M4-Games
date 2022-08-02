@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Equipo07.JuegoFuncionalidad.Palabra;
 import Equipo07.JuegoFuncionalidad.Palabras;
 
 import javax.swing.JMenuBar;
@@ -289,8 +290,8 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("inicia")) {
-			Palabras palabras = new Palabras();
-			tFieldPalabra.setText(palabras.getPalabras()[0]);
+			Palabra palabra = new Palabra();
+			tFieldPalabra.setText(palabra.getPalabra());
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
 			letra.getName();

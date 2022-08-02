@@ -19,4 +19,10 @@ public class Vidas {
 		return numVidas;
 	}
 	
+	public void quitarVida() {
+		if (this.numVidas > 0) {
+			this.numVidas--;
+		}
+	}
+	
 }
