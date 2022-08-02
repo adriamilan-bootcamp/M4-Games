@@ -25,7 +25,7 @@ public class Palabra {
 	}
 	
 	public String[] palabraSplited(String palabra) {
-		return palabra.split("\\a"); 
+		return palabra.split(""); 
 	}
 	
 	public boolean comprobarLetra(String palabra, String letra) {
