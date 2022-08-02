@@ -24,12 +24,12 @@ public class Palabra {
 		return this.palabra;
 	}
 	
-	public String[] palabraSplited(String palabra) {
-		return palabra.split("\\a"); 
+	public String[] palabraSplited() {
+		return this.palabra.split("\\a"); 
 	}
 	
-	public boolean comprobarLetra(String palabra, String letra) {
-		String[] palabraSplited = palabraSplited(palabra);
+	public boolean comprobarLetra(String letra) {
+		String[] palabraSplited = palabraSplited();
 		
 		boolean resultadoBusqueda = false;
 		for (int i = 0; i < palabraSplited.length; i++) {
