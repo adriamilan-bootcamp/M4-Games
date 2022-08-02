@@ -294,6 +294,8 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
 			letra.getName();
+		}else if(e.getActionCommand().equals("Salir")) {
+			System.exit(0);
 		}
 	}
 }
