@@ -1,20 +1,24 @@
 package Equipo07.JuegoFuncionalidad;
 
-public class Palabra {
+public class Palabras {
 	
-	private String[] palabra = new String[]{"LOBO", "CASA", "IMAN", "CERA", "ASNO", "PICA", "SECO", "RATA", "TAPA", "ACTA"}; 
+	private String[] palabras = new String[]{"LOBO", "CASA", "IMAN", "CERA", "ASNO", "PICA", "SECO", "RATA", "TAPA", "ACTA"}; 
 	
-	public Palabra(String[] palabras) {
-		for (int i = 0; i < palabras.length; i++) {
-			this.palabra[i] = palabras[i];
+	public Palabras() {
+		
+	}
+	
+	public Palabras(String[] palabrasUser) {
+		for (int i = 0; i < palabrasUser.length; i++) {
+			this.palabras[i] = palabrasUser[i];
 		}
 	}
 
 	/**
 	 * @return the palabra
 	 */
-	public String[] getPalabra() {
-		return palabra;
+	public String[] getPalabras() {
+		return palabras;
 	}
 	
 }
