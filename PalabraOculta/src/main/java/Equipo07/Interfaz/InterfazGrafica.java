@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Equipo07.JuegoFuncionalidad.Palabras;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -55,6 +58,12 @@ public class InterfazGrafica extends JFrame {
 		menu.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Partida");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Palabras palabras = new Palabras();
+				tFieldPalabra.setText(palabras.getPalabras()[0]);
+			}
+		});
 		btnNewButton_1.setBounds(61, 11, 188, 49);
 		menu.add(btnNewButton_1);
 		
