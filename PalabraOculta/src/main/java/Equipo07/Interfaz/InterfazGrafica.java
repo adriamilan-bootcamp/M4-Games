@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Equipo07.JuegoFuncionalidad.GestorEventos;
+import java.awt.Color;
 
 public class InterfazGrafica extends JFrame{
 
@@ -23,6 +24,8 @@ public class InterfazGrafica extends JFrame{
 	private JPanel contentPane;
 
 	public JTextField tFieldPalabra;
+	public JLabel lblImage;
+	public JLabel lblFallos;
 	/**
 	 * Create the frame.
 	 * @throws IOException 
@@ -105,6 +108,11 @@ public class InterfazGrafica extends JFrame{
 		lblVida5.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida5.setBounds(150, 25, 31, 29);
 		panel_1.add(lblVida5);
+		
+		lblFallos = new JLabel("Fallos: ");
+		lblFallos.setForeground(Color.RED);
+		lblFallos.setBounds(211, 25, 46, 14);
+		panel_1.add(lblFallos);
 		
 		JPanel teclado = new JPanel();
 		teclado.setBounds(10, 312, 320, 218);
@@ -273,8 +281,8 @@ public class InterfazGrafica extends JFrame{
 		btnÑ.addActionListener(gestor);
 		teclado.add(btnÑ);
 		
-		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img.jpg"))));
+		lblImage = new JLabel("");
+		lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img0.jpg"))));
 		lblImage.setBounds(340, 20, 502, 521);
 		contentPane.add(lblImage);
 	}

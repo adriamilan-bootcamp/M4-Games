@@ -5,7 +5,7 @@ public class Vidas {
 	int numVidas;
 	
 	public Vidas() {
-		this.numVidas = 10;
+		this.numVidas = 6;
 	}
 	
 	public Vidas(int vidas) {

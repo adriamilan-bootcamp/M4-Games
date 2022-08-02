@@ -28,22 +28,4 @@ public class Palabra {
 		return this.palabra.split("");
 	}
 	
-	public String[] comprobarLetra(String letra, String[] arrayIni) {
-		String[] palabraSplited = palabraSplited();
-		
-		boolean resultadoBusqueda = false;
-		for (int i = 0; i < palabraSplited.length; i++) {
-			if(palabraSplited[i].equals(letra)) {
-				arrayIni[i] = letra;
-				resultadoBusqueda = true;
-			}
-		}
-		
-		if (resultadoBusqueda == false) {
-			this.vidas.quitarVida();
-		}
-		
-		return arrayIni;
-	}
-	
 }
