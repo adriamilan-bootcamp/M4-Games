@@ -64,6 +64,7 @@ public class InterfazGrafica extends JFrame {
 				tFieldPalabra.setText(palabras.getPalabras()[0]);
 			}
 		});
+		
 		btnNewButton_1.setBounds(61, 11, 188, 49);
 		menu.add(btnNewButton_1);
 		
@@ -89,26 +90,26 @@ public class InterfazGrafica extends JFrame {
 		
 		JLabel lblVida1 = new JLabel("");
 		lblVida1.setBounds(10, 25, 31, 29);
-		lblVida1.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\bombilla32.png"));
+		lblVida1.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
 		panel_1.add(lblVida1);
 		
 		JLabel lblVida2 = new JLabel("");
-		lblVida2.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\bombilla32.png"));
+		lblVida2.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
 		lblVida2.setBounds(45, 25, 31, 29);
 		panel_1.add(lblVida2);
 		
 		JLabel lblVida3 = new JLabel("");
-		lblVida3.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\bombilla32.png"));
+		lblVida3.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
 		lblVida3.setBounds(80, 25, 31, 29);
 		panel_1.add(lblVida3);
 		
 		JLabel lblVida4 = new JLabel("");
-		lblVida4.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\bombilla32.png"));
+		lblVida4.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
 		lblVida4.setBounds(115, 25, 31, 29);
 		panel_1.add(lblVida4);
 		
 		JLabel lblVida5 = new JLabel("");
-		lblVida5.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\bombilla32.png"));
+		lblVida5.setIcon(new ImageIcon(getClass().getResource("/bombilla32.png")));
 		lblVida5.setBounds(150, 25, 31, 29);
 		panel_1.add(lblVida5);
 		
@@ -227,7 +228,7 @@ public class InterfazGrafica extends JFrame {
 		teclado.add(btnNewButton_2_5_1);
 		
 		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon("D:\\Documentos\\BootCamp\\Git\\M4-Games\\PalabraOculta\\Images\\img.jpg"));
+		lblImage.setIcon(new ImageIcon(getClass().getResource("/img.jpg")));
 		lblImage.setBounds(340, 20, 502, 521);
 		contentPane.add(lblImage);
 	}
