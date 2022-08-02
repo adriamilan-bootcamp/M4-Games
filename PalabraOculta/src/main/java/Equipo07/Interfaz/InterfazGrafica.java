@@ -12,6 +12,7 @@ import Equipo07.JuegoFuncionalidad.Palabras;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -19,8 +20,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.event.KeyEvent;
 
-public class InterfazGrafica extends JFrame {
+public class InterfazGrafica extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField tFieldPalabra;
@@ -58,13 +60,8 @@ public class InterfazGrafica extends JFrame {
 		menu.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Partida");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Palabras palabras = new Palabras();
-				tFieldPalabra.setText(palabras.getPalabras()[0]);
-			}
-		});
-		
+		btnNewButton_1.addActionListener(this);
+		btnNewButton_1.setActionCommand("iniciar");
 		btnNewButton_1.setBounds(61, 11, 188, 49);
 		menu.add(btnNewButton_1);
 		
@@ -114,122 +111,189 @@ public class InterfazGrafica extends JFrame {
 		panel_1.add(lblVida5);
 		
 		JPanel teclado = new JPanel();
+		teclado.setName("");
 		teclado.setToolTipText("");
 		teclado.setBounds(10, 312, 320, 218);
 		contentPane.add(teclado);
 		teclado.setLayout(null);
 		
-		JButton btnNewButton = new JButton("A");
-		btnNewButton.setBounds(10, 11, 47, 23);
-		teclado.add(btnNewButton);
+		JButton btnA = new JButton("A");
+		btnA.setBounds(10, 11, 47, 23);
+		btnA.setActionCommand("letra");
+		btnA.addActionListener(this);
+		teclado.add(btnA);
 		
 		JButton btnB = new JButton("B");
 		btnB.setBounds(64, 11, 47, 23);
+		btnB.setActionCommand("letra");
+		btnB.addActionListener(this);
 		teclado.add(btnB);
 		
-		JButton btnNewButton_2_1 = new JButton("D");
-		btnNewButton_2_1.setBounds(175, 11, 47, 23);
-		teclado.add(btnNewButton_2_1);
+		JButton btnD = new JButton("D");
+		btnD.setBounds(175, 11, 47, 23);
+		btnD.setActionCommand("letra");
+		btnD.addActionListener(this);
+		teclado.add(btnD);
 		
 		JButton btnC = new JButton("C");
 		btnC.setBounds(121, 11, 47, 23);
+		btnC.setActionCommand("letra");
+		btnC.addActionListener(this);
 		teclado.add(btnC);
 		
-		JButton btnNewButton_3_1 = new JButton("E");
-		btnNewButton_3_1.setBounds(232, 11, 47, 23);
-		teclado.add(btnNewButton_3_1);
+		JButton btnE = new JButton("E");
+		btnE.setBounds(232, 11, 47, 23);
+		btnE.setActionCommand("letra");
+		btnE.addActionListener(this);
+		teclado.add(btnE);
 		
-		JButton btnNewButton_4 = new JButton("F");
-		btnNewButton_4.setBounds(10, 45, 47, 23);
-		teclado.add(btnNewButton_4);
+		JButton btnF = new JButton("F");
+		btnF.setBounds(10, 45, 47, 23);
+		btnF.setActionCommand("letra");
+		btnF.addActionListener(this);
+		teclado.add(btnF);
 		
-		JButton btnNewButton_2_2 = new JButton("G");
-		btnNewButton_2_2.setBounds(64, 45, 47, 23);
-		teclado.add(btnNewButton_2_2);
+		JButton btnG = new JButton("G");
+		btnG.setBounds(64, 45, 47, 23);
+		btnG.setActionCommand("letra");
+		btnG.addActionListener(this);
+		teclado.add(btnG);
 		
-		JButton btnNewButton_3_2 = new JButton("H");
-		btnNewButton_3_2.setBounds(121, 45, 47, 23);
-		teclado.add(btnNewButton_3_2);
+		JButton btnH = new JButton("H");
+		btnH.setBounds(121, 45, 47, 23);
+		btnH.setActionCommand("letra");
+		btnH.addActionListener(this);
+		teclado.add(btnH);
 		
-		JButton btnNewButton_2_1_1 = new JButton("I");
-		btnNewButton_2_1_1.setBounds(175, 45, 47, 23);
-		teclado.add(btnNewButton_2_1_1);
+		JButton btnI = new JButton("I");
+		btnI.setBounds(175, 45, 47, 23);
+		btnI.setActionCommand("letra");
+		btnI.addActionListener(this);
+		teclado.add(btnI);
 		
-		JButton btnNewButton_3_1_1 = new JButton("J");
-		btnNewButton_3_1_1.setBounds(232, 45, 47, 23);
-		teclado.add(btnNewButton_3_1_1);
+		JButton btnJ = new JButton("J");
+		btnJ.setBounds(232, 45, 47, 23);
+		btnJ.setActionCommand("letra");
+		btnJ.addActionListener(this);
+		teclado.add(btnJ);
 		
-		JButton btnNewButton_5 = new JButton("K");
-		btnNewButton_5.setBounds(10, 79, 47, 23);
-		teclado.add(btnNewButton_5);
+		JButton btnK = new JButton("K");
+		btnK.setBounds(10, 79, 47, 23);
+		btnK.setActionCommand("letra");
+		btnK.addActionListener(this);
+		teclado.add(btnK);
 		
-		JButton btnNewButton_2_3 = new JButton("L");
-		btnNewButton_2_3.setBounds(64, 79, 47, 23);
-		teclado.add(btnNewButton_2_3);
+		JButton btnL = new JButton("L");
+		btnL.setBounds(64, 79, 47, 23);
+		btnL.setActionCommand("letra");
+		btnL.addActionListener(this);
+		teclado.add(btnL);
 		
-		JButton btnNewButton_3_3 = new JButton("M");
-		btnNewButton_3_3.setBounds(121, 79, 47, 23);
-		teclado.add(btnNewButton_3_3);
+		JButton btnM = new JButton("M");
+		btnM.setBounds(121, 79, 47, 23);
+		btnM.setActionCommand("letra");
+		btnM.addActionListener(this);
+		teclado.add(btnM);
 		
-		JButton btnNewButton_2_1_2 = new JButton("N");
-		btnNewButton_2_1_2.setBounds(175, 79, 47, 23);
-		teclado.add(btnNewButton_2_1_2);
+		JButton btnN = new JButton("N");
+		btnN.setBounds(175, 79, 47, 23);
+		btnN.setActionCommand("letra");
+		btnN.addActionListener(this);
+		teclado.add(btnN);
 		
-		JButton btnNewButton_3_1_2 = new JButton("O");
-		btnNewButton_3_1_2.setBounds(232, 79, 47, 23);
-		teclado.add(btnNewButton_3_1_2);
+		JButton btnO = new JButton("O");
+		btnO.setBounds(232, 79, 47, 23);
+		btnO.setActionCommand("letra");
+		btnO.addActionListener(this);
+		teclado.add(btnO);
 		
-		JButton btnNewButton_6 = new JButton("P");
-		btnNewButton_6.setBounds(10, 113, 47, 23);
-		teclado.add(btnNewButton_6);
+		JButton btnP = new JButton("P");
+		btnP.setBounds(10, 113, 47, 23);
+		btnP.setActionCommand("letra");
+		btnP.addActionListener(this);
+		teclado.add(btnP);
 		
-		JButton btnNewButton_2_4 = new JButton("Q");
-		btnNewButton_2_4.setBounds(64, 113, 47, 23);
-		teclado.add(btnNewButton_2_4);
+		JButton btnQ = new JButton("Q");
+		btnQ.setBounds(64, 113, 47, 23);
+		btnQ.setActionCommand("letra");
+		btnQ.addActionListener(this);
+		teclado.add(btnQ);
 		
-		JButton btnNewButton_3_4 = new JButton("R");
-		btnNewButton_3_4.setBounds(121, 113, 47, 23);
-		teclado.add(btnNewButton_3_4);
+		JButton btnR = new JButton("R");
+		btnR.setBounds(121, 113, 47, 23);
+		btnR.setActionCommand("letra");
+		btnR.addActionListener(this);
+		teclado.add(btnR);
 		
-		JButton btnNewButton_2_1_3 = new JButton("S");
-		btnNewButton_2_1_3.setBounds(175, 113, 47, 23);
-		teclado.add(btnNewButton_2_1_3);
+		JButton btnS = new JButton("S");
+		btnS.setBounds(175, 113, 47, 23);
+		btnS.setActionCommand("letra");
+		btnS.addActionListener(this);
+		teclado.add(btnS);
 		
-		JButton btnNewButton_3_1_3 = new JButton("T");
-		btnNewButton_3_1_3.setBounds(232, 113, 47, 23);
-		teclado.add(btnNewButton_3_1_3);
+		JButton btnT = new JButton("T");
+		btnT.setBounds(232, 113, 47, 23);
+		btnT.setActionCommand("letra");
+		btnT.addActionListener(this);
+		teclado.add(btnT);
 		
-		JButton btnNewButton_7 = new JButton("U");
-		btnNewButton_7.setBounds(10, 147, 47, 23);
-		teclado.add(btnNewButton_7);
+		JButton btnU = new JButton("U");
+		btnU.setBounds(10, 147, 47, 23);
+		btnU.setActionCommand("letra");
+		btnU.addActionListener(this);
+		teclado.add(btnU);
 		
-		JButton btnNewButton_2_5 = new JButton("V");
-		btnNewButton_2_5.setBounds(64, 147, 47, 23);
-		teclado.add(btnNewButton_2_5);
+		JButton btnV = new JButton("V");
+		btnV.setBounds(64, 147, 47, 23);
+		btnV.setActionCommand("letra");
+		btnV.addActionListener(this);
+		teclado.add(btnV);
 		
-		JButton btnNewButton_3_5 = new JButton("W");
-		btnNewButton_3_5.setBounds(121, 147, 47, 23);
-		teclado.add(btnNewButton_3_5);
+		JButton btnW = new JButton("W");
+		btnW.setBounds(121, 147, 47, 23);
+		btnW.setActionCommand("letra");
+		btnW.addActionListener(this);
+		teclado.add(btnW);
 		
-		JButton btnNewButton_2_1_4 = new JButton("X");
-		btnNewButton_2_1_4.setBounds(175, 147, 47, 23);
-		teclado.add(btnNewButton_2_1_4);
+		JButton btnX = new JButton("X");
+		btnX.setBounds(175, 147, 47, 23);
+		btnX.setActionCommand("letra");
+		btnX.addActionListener(this);
+		teclado.add(btnX);
 		
-		JButton btnNewButton_3_1_4 = new JButton("Y");
-		btnNewButton_3_1_4.setBounds(232, 147, 47, 23);
-		teclado.add(btnNewButton_3_1_4);
+		JButton btnY = new JButton("Y");
+		btnY.setBounds(232, 147, 47, 23);
+		btnY.setActionCommand("letra");
+		btnY.addActionListener(this);
+		teclado.add(btnY);
 		
-		JButton btnNewButton_7_1 = new JButton("Z");
-		btnNewButton_7_1.setBounds(10, 181, 47, 23);
-		teclado.add(btnNewButton_7_1);
+		JButton btnZ = new JButton("Z");
+		btnZ.setBounds(10, 181, 47, 23);
+		btnZ.setActionCommand("letra");
+		btnZ.addActionListener(this);
+		teclado.add(btnZ);
 		
-		JButton btnNewButton_2_5_1 = new JButton("Ñ");
-		btnNewButton_2_5_1.setBounds(64, 181, 47, 23);
-		teclado.add(btnNewButton_2_5_1);
+		JButton btnÑ = new JButton("Ñ");
+		btnÑ.setBounds(64, 181, 47, 23);
+		btnÑ.setActionCommand("letra");
+		btnÑ.addActionListener(this);
+		teclado.add(btnÑ);
 		
 		JLabel lblImage = new JLabel("");
 		lblImage.setIcon(new ImageIcon(getClass().getResource("/img.jpg")));
 		lblImage.setBounds(340, 20, 502, 521);
 		contentPane.add(lblImage);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("inicia")) {
+			Palabras palabras = new Palabras();
+			tFieldPalabra.setText(palabras.getPalabras()[0]);
+		}else if(e.getActionCommand().equals("letra")) {
+			JButton letra = (JButton) e.getSource();
+			letra.getName();
+		}
 	}
 }
