@@ -9,7 +9,7 @@ public class Palabra {
 	private Vidas vidas = new Vidas();
 	
 	public Palabra() {
-		int randomNumber = (int)Math.floor(Math.random()*(9-0+1)+9);
+		int randomNumber = (int)Math.floor(Math.random()*9);
 		this.palabra = palabras[randomNumber];
 	}
 	

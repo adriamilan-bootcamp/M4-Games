@@ -44,6 +44,7 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Salir");
+		mntmNewMenuItem_2.addActionListener(this);
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -284,13 +285,27 @@ public class InterfazGrafica extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getActionCommand().equals("inicia")) {
-			Palabra palabra = new Palabra();
-			tFieldPalabra.setText(palabra.getPalabra());
+		Palabra palabra;
+		String[] letras;
+		System.out.println(e.getActionCommand());
+		if (e.getActionCommand().equals("iniciar")) {
+			tFieldPalabra.setText("");
+			palabra = new Palabra();
+			letras = palabra.getPalabra().split("");
+			int i = 0;
+			while (i < letras.length) {
+				tFieldPalabra.setText(tFieldPalabra.getText() + "_ ");
+				i++;
+			}
+			
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
 			System.out.println(letra.getText());
 			tFieldPalabra.setText(letra.getText());
+			
+			for (int i = 0; i < palabra.getPalabra().split("").length; i++) {
+				resultadoBusqueda = (palabraSplited[i].equals(letra)) ? true : false;
+			}
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
 		}
