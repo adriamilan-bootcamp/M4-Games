@@ -207,14 +207,15 @@ public class GestorEventos implements ActionListener {
 			case 1:
 				ig.lblVida1.setVisible(false);
 				break;
-			case 0:
+			default:
 				JOptionPane.showMessageDialog(null, "No te quedan pistas :(");
 				break;
 		}
-		if (countBombillas != 0) {
+		if (countBombillas > 0) {
 			pistaConstructor();
+			countBombillas--;
 		}
-		countBombillas--;
+		
 	}
 	
 	// Mostrar Bombillas
