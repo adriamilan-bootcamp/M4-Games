@@ -58,6 +58,8 @@ public class InterfazGrafica extends JFrame{
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
+		// this line center the screen interface
+		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		
 		JPanel menu = new JPanel();
