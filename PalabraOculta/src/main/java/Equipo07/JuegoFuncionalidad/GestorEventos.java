@@ -1,5 +1,6 @@
 package Equipo07.JuegoFuncionalidad;
 
+import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -7,10 +8,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -49,7 +54,6 @@ public class GestorEventos implements ActionListener {
 			
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
-			System.out.println(letra.getText());
 			ig.tFieldPalabra.setText("");
 			try {
 				arrayIni = comprobarLetra(letra.getText(), arrayIni);
@@ -60,6 +64,7 @@ public class GestorEventos implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			letra.setEnabled(false);
 			
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
@@ -71,6 +76,13 @@ public class GestorEventos implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		}else if (e.getActionCommand().equals("About")) {
+			JOptionPane.showMessageDialog(ig, "Juego de LA PALABRA OCULTA v1.0\n"
+					+ "Creadores:\n"
+					+ "=> Josep Martorell\n"
+					+ "=> Felipe Gomez\n"
+					+ "=> Adrià Milan\n\n"
+					+ "Agradecimientos a Jose Marín");
 		}
 	}
 	
@@ -79,7 +91,6 @@ public class GestorEventos implements ActionListener {
 		mostrarBombillas();
 		ig.tFieldPalabra.setText("");
 		palabra = new Palabra();
-		System.out.println(palabra.getPalabra());
 		letras = palabra.palabraSplited();
 		for (int j = 0; j < letras.length; j++) {
 			arrayIni[j] = "_ ";
@@ -87,6 +98,10 @@ public class GestorEventos implements ActionListener {
 		fallos = 0;
 		aciertos = 0;
 		imprimir();
+		for (Enumeration<AbstractButton> buttons = ig.botones.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            button.setEnabled(true);
+        }
 		
 	}
 	
@@ -130,6 +145,7 @@ public class GestorEventos implements ActionListener {
 		if (aciertos == letras.length) {
 			JOptionPane.showMessageDialog(ig, "Has ganado!!!!\nHas fallado " + fallos);
 			ig.tFieldPalabra.setText("");
+			desactivarLetras();
 		}else if (vidas.getNumVidas() == 0) {
 			JOptionPane.showMessageDialog(ig, "Has perdido :(");
 			fallos = 0;
@@ -137,19 +153,36 @@ public class GestorEventos implements ActionListener {
 			ig.lblFallos.setText("Fallos: " + fallos);
 			ig.tFieldPalabra.setText("");
 			vidas = new Vidas();
+			desactivarLetras();
 		}
 	}
 	
+	//Desactiva las letras para no poder clicar
+	public void desactivarLetras() {
+		for (Enumeration<AbstractButton> buttons = ig.botones.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            button.setEnabled(false);
+        }
+	}
+	
+	//Crea el mensaje con la pista y desactiva una letra
 	public void pistaConstructor() {
 		
 		ArrayList<String> abecedarioSinLetras = palabra.getAbecedarioSinLetras();
 		String pistaMessage = "La palabra no contiene las siguientes letras";
 		
-		for (int i = 0; i < 3; i++) {
-			int randomAbecedario = (int)Math.floor(Math.random()*abecedarioSinLetras.size());
-			pistaMessage += "\n=> " + abecedarioSinLetras.get(randomAbecedario);
-			palabra.quitarLetraAbecedario(randomAbecedario);
-		}
+		int randomAbecedario = (int)Math.floor(Math.random()*abecedarioSinLetras.size());
+		pistaMessage += "\n=> " + abecedarioSinLetras.get(randomAbecedario);
+		
+		for (Enumeration<AbstractButton> buttons = ig.botones.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.getText().equals(abecedarioSinLetras.get(randomAbecedario))) {
+            	button.setEnabled(false);
+            }
+        }
+		
+		palabra.quitarLetraAbecedario(randomAbecedario);
 		
 		JOptionPane.showMessageDialog(ig, pistaMessage);
 		
@@ -181,8 +214,6 @@ public class GestorEventos implements ActionListener {
 		if (countBombillas != 0) {
 			pistaConstructor();
 		}
-		
-		quitarVidas();
 		countBombillas--;
 	}
 	
