@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -131,9 +135,26 @@ public class GestorEventos implements ActionListener {
 		}
 	}
 	
+	public String pistaConstructor() {
+		
+		ArrayList<String> abecedarioSinLetras = palabra.getAbecedarioSinLetras();
+		String pistaMessage = "La palabra no contiene las siguientes letras";
+		
+		for (int i = 0; i < 5; i++) {
+			int randomAbecedario = (int)Math.floor(Math.random()*abecedarioSinLetras.size());
+			pistaMessage += "\n=> " + abecedarioSinLetras.get(randomAbecedario);
+			palabra.quitarLetraAbecedario(randomAbecedario);
+		}
+	
+		return pistaMessage;
+		
+	}
+	
 	// Te da una pista a cambio de un fallo
 	public void resolverPista() {
 		
+		JOptionPane.showMessageDialog(ig, pistaConstructor());
+				
 		switch (countBombillas) {
 			case 5:
 				ig.lblVida5.setVisible(false);
@@ -158,6 +179,7 @@ public class GestorEventos implements ActionListener {
 		countBombillas--;
 	}
 	
+	// Mostrar Bombillas
 	public void mostrarBombillas() {
 		
 		countBombillas = 5;
