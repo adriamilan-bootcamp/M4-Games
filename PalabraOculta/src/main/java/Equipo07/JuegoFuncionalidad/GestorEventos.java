@@ -147,7 +147,7 @@ public class GestorEventos implements ActionListener {
 			ig.tFieldPalabra.setText("");
 			desactivarLetras();
 		}else if (vidas.getNumVidas() == 0) {
-			JOptionPane.showMessageDialog(ig, "Has perdido :(");
+			JOptionPane.showMessageDialog(ig, "Has perdido : "+"LA PALABRA ERA: "+palabra.getPalabra());
 			fallos = 0;
 			ig.lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img" + fallos + ".jpg"))));
 			ig.lblFallos.setText("Fallos: " + fallos);
