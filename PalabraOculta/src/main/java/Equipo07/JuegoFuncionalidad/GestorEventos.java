@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -167,7 +168,8 @@ public class GestorEventos implements ActionListener {
 		ig.lblVida3.setVisible(true);
 		ig.lblVida2.setVisible(true);
 		ig.lblVida1.setVisible(true);
+		
 	
 	}
-
+	
 }
