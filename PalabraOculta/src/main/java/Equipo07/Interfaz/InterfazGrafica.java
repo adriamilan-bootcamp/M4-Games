@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 
 import Equipo07.JuegoFuncionalidad.GestorEventos;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InterfazGrafica extends JFrame{
 
@@ -26,6 +28,11 @@ public class InterfazGrafica extends JFrame{
 	public JTextField tFieldPalabra;
 	public JLabel lblImage;
 	public JLabel lblFallos;
+	public JLabel lblVida1;
+	public JLabel lblVida2;
+	public JLabel lblVida3;
+	public JLabel lblVida4;
+	public JLabel lblVida5;
 	/**
 	 * Create the frame.
 	 * @throws IOException 
@@ -65,6 +72,8 @@ public class InterfazGrafica extends JFrame{
 		menu.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Resolver");
+		btnNewButton_1_1.addActionListener(gestor);
+		btnNewButton_1_1.setActionCommand("resolver");
 		btnNewButton_1_1.setBounds(61, 76, 188, 49);
 		menu.add(btnNewButton_1_1);
 		
@@ -84,34 +93,34 @@ public class InterfazGrafica extends JFrame{
 		tFieldPalabra.setEditable(false);
 		tFieldPalabra.setColumns(10);
 		
-		JLabel lblVida1 = new JLabel("");
+		lblVida1 = new JLabel("");
 		lblVida1.setBounds(10, 25, 31, 29);
 		lblVida1.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		panel_1.add(lblVida1);
 		
-		JLabel lblVida2 = new JLabel("");
+		lblVida2 = new JLabel("");
 		lblVida2.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida2.setBounds(45, 25, 31, 29);
 		panel_1.add(lblVida2);
 		
-		JLabel lblVida3 = new JLabel("");
+		lblVida3 =  new JLabel("");
 		lblVida3.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida3.setBounds(80, 25, 31, 29);
 		panel_1.add(lblVida3);
 		
-		JLabel lblVida4 = new JLabel("");
+		lblVida4 = new JLabel("");
 		lblVida4.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida4.setBounds(115, 25, 31, 29);
 		panel_1.add(lblVida4);
 		
-		JLabel lblVida5 = new JLabel("");
+		lblVida5 = new JLabel("");
 		lblVida5.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/bombilla32.png"))));
 		lblVida5.setBounds(150, 25, 31, 29);
 		panel_1.add(lblVida5);
 		
 		lblFallos = new JLabel("Fallos: ");
 		lblFallos.setForeground(Color.RED);
-		lblFallos.setBounds(211, 25, 46, 14);
+		lblFallos.setBounds(211, 25, 86, 14);
 		panel_1.add(lblFallos);
 		
 		JPanel teclado = new JPanel();
@@ -251,12 +260,6 @@ public class InterfazGrafica extends JFrame{
 		btnV.addActionListener(gestor);
 		teclado.add(btnV);
 		
-		JButton btnW = new JButton("W");
-		btnW.setBounds(121, 147, 47, 23);
-		btnW.setActionCommand("letra");
-		btnW.addActionListener(gestor);
-		teclado.add(btnW);
-		
 		JButton btnX = new JButton("X");
 		btnX.setBounds(175, 147, 47, 23);
 		btnX.setActionCommand("letra");
@@ -280,6 +283,12 @@ public class InterfazGrafica extends JFrame{
 		btnÑ.setActionCommand("letra");
 		btnÑ.addActionListener(gestor);
 		teclado.add(btnÑ);
+		
+		JButton btnW = new JButton("W");
+		btnW.setActionCommand("letra");
+		btnW.setBounds(121, 146, 47, 23);
+		btnW.addActionListener(gestor);
+		teclado.add(btnW);
 		
 		lblImage = new JLabel("");
 		lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img0.jpg"))));

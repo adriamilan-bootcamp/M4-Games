@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import Equipo07.Interfaz.InterfazGrafica;
@@ -22,6 +23,7 @@ public class GestorEventos implements ActionListener {
 	private String[]arrayIni;
 	
 	int count = 0, aciertos = 0;
+	int countBombillas = 5;
 	
 	public GestorEventos(InterfazGrafica interfaz) {
 		
@@ -38,16 +40,8 @@ public class GestorEventos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("iniciar")) {
-			ig.tFieldPalabra.setText("");
-			palabra = new Palabra();
-			System.out.println(palabra.getPalabra());
-			letras = palabra.palabraSplited();
-			for (int j = 0; j < letras.length; j++) {
-				arrayIni[j] = "_ ";
-			}
-			count = 0;
-			aciertos = 0;
-			imprimir();
+			
+			iniciarPartida();
 			
 		}else if(e.getActionCommand().equals("letra")) {
 			JButton letra = (JButton) e.getSource();
@@ -65,7 +59,26 @@ public class GestorEventos implements ActionListener {
 			
 		}else if(e.getActionCommand().equals("Salir")) {
 			System.exit(0);
+			
+		}else if(e.getActionCommand().equals("resolver")) {
+			resolverPista();
 		}
+	}
+	
+	public void iniciarPartida() {
+		
+		mostrarBombillas();
+		ig.tFieldPalabra.setText("");
+		palabra = new Palabra();
+		System.out.println(palabra.getPalabra());
+		letras = palabra.palabraSplited();
+		for (int j = 0; j < letras.length; j++) {
+			arrayIni[j] = "_ ";
+		}
+		count = 0;
+		aciertos = 0;
+		imprimir();
+		
 	}
 	
 	//Comprueba si la letra existe en la palabra
@@ -116,6 +129,45 @@ public class GestorEventos implements ActionListener {
 			ig.tFieldPalabra.setText("");
 			vidas = new Vidas();
 		}
+	}
+	
+	// Te da una pista a cambio de un fallo
+	public void resolverPista() {
+		
+		switch (countBombillas) {
+			case 5:
+				ig.lblVida5.setVisible(false);
+				break;
+			case 4:
+				ig.lblVida4.setVisible(false);
+				break;
+			case 3:
+				ig.lblVida3.setVisible(false);
+				break;
+			case 2:
+				ig.lblVida2.setVisible(false);
+				break;
+			case 1:
+				ig.lblVida1.setVisible(false);
+				break;
+			case 0:
+				JOptionPane.showMessageDialog(null, "No te quedan pistas :(");
+				break;
+		}
+		
+		countBombillas--;
+	}
+	
+	public void mostrarBombillas() {
+		
+		countBombillas = 5;
+		
+		ig.lblVida5.setVisible(true);
+		ig.lblVida4.setVisible(true);
+		ig.lblVida3.setVisible(true);
+		ig.lblVida2.setVisible(true);
+		ig.lblVida1.setVisible(true);
+	
 	}
 
 }
