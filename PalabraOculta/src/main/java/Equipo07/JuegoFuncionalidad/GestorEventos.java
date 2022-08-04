@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -23,7 +26,7 @@ public class GestorEventos implements ActionListener {
 	private String[]letras; 
 	private String[]arrayIni;
 	
-	int count = 0, aciertos = 0;
+	int fallos = 0, aciertos = 0;
 	int countBombillas = 5;
 	
 	public GestorEventos(InterfazGrafica interfaz) {
@@ -62,7 +65,12 @@ public class GestorEventos implements ActionListener {
 			System.exit(0);
 			
 		}else if(e.getActionCommand().equals("resolver")) {
-			resolverPista();
+			try {
+				resolverPista();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
@@ -76,7 +84,7 @@ public class GestorEventos implements ActionListener {
 		for (int j = 0; j < letras.length; j++) {
 			arrayIni[j] = "_ ";
 		}
-		count = 0;
+		fallos = 0;
 		aciertos = 0;
 		imprimir();
 		
@@ -95,8 +103,7 @@ public class GestorEventos implements ActionListener {
 		}
 		
 		if (resultadoBusqueda == false) {
-			vidas.quitarVida();
-			cambiarImgen();
+			quitarVidas();
 		}
 		imprimir();
 		estado();
@@ -111,30 +118,46 @@ public class GestorEventos implements ActionListener {
 	}
 	
 	//Cambia la imgen de la horca y muestra los fallos
-	public void cambiarImgen() throws FileNotFoundException, IOException {	
-		count++;
-		ig.lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img" + count + ".jpg"))));
-		ig.lblFallos.setText("Fallos: " + count);
+	public void quitarVidas() throws FileNotFoundException, IOException {	
+		vidas.quitarVida();
+		fallos++;
+		ig.lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img" + fallos + ".jpg"))));
+		ig.lblFallos.setText("Fallos: " + fallos);
 	}
 	
 	//Controla el estado si ganas o pierdes
 	public void estado() throws FileNotFoundException, IOException {
 		if (aciertos == letras.length) {
-			JOptionPane.showMessageDialog(ig, "Has ganado!!!!\nHas fallado " + count);
+			JOptionPane.showMessageDialog(ig, "Has ganado!!!!\nHas fallado " + fallos);
 			ig.tFieldPalabra.setText("");
 		}else if (vidas.getNumVidas() == 0) {
 			JOptionPane.showMessageDialog(ig, "Has perdido :(");
-			count = 0;
-			ig.lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img" + count + ".jpg"))));
-			ig.lblFallos.setText("Fallos: " + count);
+			fallos = 0;
+			ig.lblImage.setIcon(new ImageIcon(ImageIO.read(new FileInputStream("resource/img" + fallos + ".jpg"))));
+			ig.lblFallos.setText("Fallos: " + fallos);
 			ig.tFieldPalabra.setText("");
 			vidas = new Vidas();
 		}
 	}
 	
-	// Te da una pista a cambio de un fallo
-	public void resolverPista() {
+	public void pistaConstructor() {
 		
+		ArrayList<String> abecedarioSinLetras = palabra.getAbecedarioSinLetras();
+		String pistaMessage = "La palabra no contiene las siguientes letras";
+		
+		for (int i = 0; i < 3; i++) {
+			int randomAbecedario = (int)Math.floor(Math.random()*abecedarioSinLetras.size());
+			pistaMessage += "\n=> " + abecedarioSinLetras.get(randomAbecedario);
+			palabra.quitarLetraAbecedario(randomAbecedario);
+		}
+		
+		JOptionPane.showMessageDialog(ig, pistaMessage);
+		
+	}
+	
+	// Te da una pista a cambio de un fallo
+	public void resolverPista() throws FileNotFoundException, IOException {
+				
 		switch (countBombillas) {
 			case 5:
 				ig.lblVida5.setVisible(false);
@@ -155,10 +178,15 @@ public class GestorEventos implements ActionListener {
 				JOptionPane.showMessageDialog(null, "No te quedan pistas :(");
 				break;
 		}
+		if (countBombillas != 0) {
+			pistaConstructor();
+		}
 		
+		quitarVidas();
 		countBombillas--;
 	}
 	
+	// Mostrar Bombillas
 	public void mostrarBombillas() {
 		
 		countBombillas = 5;
