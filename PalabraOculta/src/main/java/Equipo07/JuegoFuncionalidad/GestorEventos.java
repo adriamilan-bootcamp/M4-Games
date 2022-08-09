@@ -146,6 +146,7 @@ public class GestorEventos implements ActionListener {
 			JOptionPane.showMessageDialog(ig, "Has ganado!!!!\nHas fallado " + fallos);
 			ig.tFieldPalabra.setText("");
 			desactivarLetras();
+			vidas = new Vidas();
 		}else if (vidas.getNumVidas() == 0) {
 			JOptionPane.showMessageDialog(ig, "Has perdido : "+"LA PALABRA ERA: "+palabra.getPalabra());
 			fallos = 0;
